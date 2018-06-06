@@ -4,6 +4,11 @@ from alias.models import Topic, Translems
 
 
 class DbLoader:
+    '''
+    Load translems from excel.xlsx document to an existed database
+    Every single file must have it's 'topic' at specified position and
+    russian/english phrases since specified row in columns A and B
+    '''
     def __init__(self, filename):
         reader = ecxeltranslemreader.ExcelExtractor(filename)
         self._topic = reader.get_topic()
