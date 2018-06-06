@@ -1,0 +1,109 @@
+body {
+    background-image: url("./img/Background.jpg");
+}
+
+ul li {
+    list-style-type: none;
+}
+
+header {
+    background-color:  rgba(120, 120, 120, 0.7);
+    box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.75);
+    /*width: 320px;*/
+    /*height: 70px;*/
+    height: 10vh;
+
+}
+
+main {
+    height: 80vh;
+    /*background-color: beige;*/
+}
+
+footer {
+    background-color:  rgba(205, 205, 205, 0.7);
+    box-shadow: 0 8px 14.85px 0.15px rgba(0, 0, 0, 0.15);
+/*width: 320px;*/
+/*height: 71px;*/
+    /*background-color: green;*/
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu {
+    display: inline-block;
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+}
+
+.ajax_start {
+    border-style: solid;
+    border-width: 2px;
+    border-color:  #b30000;
+    background-color:  rgba(162, 70, 70, 0);
+    width: 142px;
+    height: 51px;
+}
+
+.welcome {
+    display: inline-block;
+    /*height: 50px;*/
+    /*line-height: 50px;*/
+}
+
+.timer_container {
+    height: 40px;
+    border: solid 3px blue;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.translems_wrapper ul {
+    padding-top: 5vh;
+}
+
+.translems {
+    height: 6vh;
+}
+
+.control_timer {
+    width: 142px;
+    height: 51px;
+    background-color: inherit;
+    font-family: ClinicaPro;
+    color:  #b30000;
+    font-size: 20px;/* Approximation due to font substitution */
+    font-weight: 400;
+    text-align: center;
+}
+
+.ajax_new {
+    width: 25px;
+    height: 40px;
+    background-image: url("./img/Right.png");
+    background-repeat: no-repeat;
+}
+
+.ajax_prev {
+    width: 25px;
+    height: 40px;
+    background-image: url("./img/Left.png");
+    background-repeat: no-repeat;
+}
+
+#timer {
+    line-height: 40px;
+    height: 40px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+#russian {
+    display: none;
+}
+
+#english {
+    display: block;
+}

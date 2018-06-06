@@ -1,0 +1,125 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Hello, world!</title>
+  </head>
+  <body onload="initiate_timer()">
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="menu col-4">
+            <button class="ajax_start" onclick="startGame()">quick start</button>
+          </div>
+          <div class="welcome col-8">
+            <span class="multiselect-native-select">
+                <select id="custom_topics" multiple="multiple">
+                  <option value="general">general</option>
+                  <option value="Ральф Нейдер">Ральф Нейдер</option>
+			    </select>
+                <div class="btn-group">
+                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Customize topics" style="width: 100%; overflow: hidden; text-overflow: ellipsis;"><span class="multiselect-selected-text">Customize topics</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="max-height: 200px; overflow-y: auto; overflow-x: hidden;"><li><a tabindex="0"><label class="checkbox" title="general"><input type="checkbox" value="general"> general</label></a></li><li><a tabindex="0"><label class="checkbox" title="Ральф Нейдер"><input type="checkbox" value="Ральф Нейдер"> Ральф Нейдер</label></a></li></ul>
+                </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="timer_container">
+        <section id="timer">
+          <button class="addHalfMinute" onclick="addHalfMinute()">+</button>
+          <span class="minutes">2</span>
+          <span class="delimiter">:</span>
+          <span class="seconds">0</span>
+          <button class="subtractHalfMinute" onclick="subtractHalfMinute()">-</button>
+          <button class="reset" onclick="resetTimer()">reset</button>
+        </section>
+      </div>
+      <div class="translems_wrapper" onclick="change_language()">
+      <section id="english">
+      </section>
+      <section id="russian">
+      </section>
+      </div>
+    </main>
+    <footer class="fixed-bottom">
+        <button class="ajax_prev" onclick="prevCard()"></button>
+        <button class="control_timer" onclick="controlTimer()">start</button>
+        <button class="ajax_new" onclick="nextCard()"></button>
+    </footer>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
+    <script src="{{ url_for('static', filename='js/multiselect_js.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/my_js.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
+  </body>
+</html>
+  
+
+
+
+<!--
+
+<section id="english">
+        <div class="container">
+          
+          <ul>
+            
+            <li><p class="translems">the theories are still relevant</p></li>
+            
+            <li><p class="translems">is best known for</p></li>
+            
+            <li><p class="translems">argued that</p></li>
+            
+            <li><p class="translems">go</p></li>
+            
+            <li><p class="translems">the economic interpretation of history</p></li>
+            
+            <li><p class="translems">pressing problems require immediate attention</p></li>
+            
+            <li><p class="translems">contains some of the most memorable lines</p></li>
+            
+            <li><p class="translems">guild masters and journeymen</p></li>
+            
+          </ul>
+          
+        </div>
+      </section>
+      <section id="russian">
+          <div class="container">
+          
+          <ul>
+            
+            <li><p class="translems">теории по-прежнему актуальны</p></li>
+            
+            <li><p class="translems">известен за</p></li>
+            
+            <li><p class="translems">возражал</p></li>
+            
+            <li><p class="translems">идти</p></li>
+            
+            <li><p class="translems">экономическая интерпретация истории</p></li>
+            
+            <li><p class="translems">актуальная проблема требует немедленного вмешательства</p></li>
+            
+            <li><p class="translems">включать в себя несколько самых запоминающихся строк</p></li>
+            
+            <li><p class="translems">мастера гильдий и подмастерья</p></li>
+            
+          </ul>
+          
+        </div>
+      </section>
+
+-->
