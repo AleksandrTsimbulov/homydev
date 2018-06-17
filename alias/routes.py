@@ -64,72 +64,98 @@ def register():
 @app.route('/act', methods=['GET', 'POST'])
 def act():
     action = request.get_json()
+    print(action)
     if action['action'] == 'start':
         print('in start')
-        resp = start_game(action)
+        resp = GameController.start_game(action)
     elif action['action'] == 'next_card':
         print('in next')
-        resp = gameController.next_card(action)
+        resp = GameController.next_card()
     elif action['action'] == 'prev_card':
         print('in prev')
-        resp = gameController.prev_card(action)
+        resp = GameController.prev_card()
     else:
         print('There is an action request error!')
         resp = None
     return jsonify(resp)
 
 
-class gameController:
+class GameController:
+    used_cards = []
+    consecutive_card_number = 0
+    translem_ids = []
 
+    @classmethod
+    def start_game(cls, action):
+        cls._clear_game()
+        if not action['topics']:
+            topics = ['origin']
+        else:
+            topics = action['topics']
+        topic_ids = cls._get_id_for_topics(topics)
+        cls.translem_ids = cls._get_translem_id(topic_ids)
+        return cls.next_card()
 
+    @classmethod
+    def next_card(cls):
+        if len(cls.used_cards) == cls.consecutive_card_number:
+            resp = cls._get_new_card()
+            cls.consecutive_card_number += 1
+            cls.used_cards.append(resp)
+        elif len(cls.used_cards) > cls.consecutive_card_number:
+            resp = cls.used_cards[cls.consecutive_card_number]
+            cls.consecutive_card_number += 1
+        else:
+            print('Unexpected operation for next_card', cls.consecutive_card_number, cls.used_cards)
+            resp = None
+        return resp
 
-    def next_card(self, action):
-        pass
+    @classmethod
+    def prev_card(cls):
+        if len(cls.used_cards) == 1 or cls.consecutive_card_number == 1:
+            print("No cards have been played yet or shown is the last card")
+            resp = cls.used_cards[cls.consecutive_card_number - 1]
+        else:
+            cls.consecutive_card_number -= 1
+            resp = cls.used_cards[cls.consecutive_card_number - 1]
+        return resp
 
-    def prev_card(self, action):
-        pass
+    @staticmethod
+    def _clear_game():
+        __class__.used_cards = []
+        __class__.consecutive_card_number = 0
+        __class__.translem_ids = []
 
+    @staticmethod
+    def _get_new_card():
+        random_translem_ids = __class__._get_random_8_translem_ids_from(__class__.translem_ids)
+        russian_words, english_words = __class__._get_translems(random_translem_ids)
+        resp = {'english': english_words, 'russian': russian_words}
+        return resp
 
-def start_game(action):
-    if not action['topics']:
-        topics = ['origin']
-    else:
-        topics = action['topics']
-    topic_ids = get_id_for_topics(topics)
-    tranlem_ids = get_translem_id(topic_ids)
-    random_translem_ids = get_random_8_translem_ids_from(tranlem_ids)
-    russian_words, english_words = get_translems(random_translem_ids)
-    resp = {'english': english_words, 'russian': russian_words}
-    return resp
+    @staticmethod
+    def _get_id_for_topics(list_of_topics):
+        return [db.session.query(Topic.id).filter(Topic.topic_name == topic).first()[0] for topic in list_of_topics]
 
+    @staticmethod
+    def _get_translem_id(topic_ids):
+        translem_ids = []
+        for topic_id in topic_ids:
+            the_ids = db.session.query(Translems.id).filter(Translems.topic_id == topic_id).all()
+            translem_ids.extend([value for (value,) in the_ids])
+        return translem_ids
 
-def get_id_for_topics(list):
-    # returns list of chosen topic ids
-    ids = []
-    for topic in list:
-        topic_id = db.session.query(Topic.id).filter(Topic.topic_name == topic).first()[0]
-        ids.append(topic_id)
-    print(ids)
-    return ids
+    @staticmethod
+    def _get_random_8_translem_ids_from(translem_ids):
+        return random.sample(translem_ids, 8)
 
-
-def get_translem_id(topic_ids):
-    for topic_id in topic_ids:
-        the_ids = db.session.query(Translems.id).filter(Translems.topic_id == topic_id).all()
-        return [value for (value,) in the_ids]
-
-
-def get_random_8_translem_ids_from(translem_ids):
-    list_of_random_translems = random.sample(translem_ids, 8)
-    return list_of_random_translems
-
-
-def get_translems(translem_ids):
-    russian = []
-    english = []
-    for id in translem_ids:
-        translem = db.session.query(Translems.russian, Translems.english).filter(Translems.id == id).first()
-        russian.append(translem[0])
-        english.append(translem[1])
-    print(russian, english)
-    return russian, english
+    @staticmethod
+    def _get_translems(translem_ids):
+        russian = []
+        english = []
+        for id in translem_ids:
+            translem = db.session.query(Translems.russian, Translems.english).filter(Translems.id == id).first()
+            russian.append(translem[0])
+            english.append(translem[1])
+        print(russian, english)
+        return russian, english

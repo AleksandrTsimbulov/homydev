@@ -35,9 +35,10 @@ function startGame() {
 
 function nextCard() {
     var postNew = {'action': 'next_card'};
+    console.log(JSON.stringify(postNew));
     $.ajax({
         type: 'POST',
-        url: '/action',
+        url: '/act',
         data: JSON.stringify(postNew),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
@@ -55,9 +56,10 @@ function nextCard() {
 
 function prevCard() {
     var postPrev = {'action': 'prev_card'};
+    console.log(JSON.stringify(postPrev));
     $.ajax({
         type: 'POST',
-        url: '/action',
+        url: '/act',
         data: JSON.stringify(postPrev),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
@@ -125,5 +127,3 @@ function clearWords(parentId) {
         parentNode.removeChild(parentNode.firstChild);
     }
 }
-
-
