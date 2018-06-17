@@ -11,32 +11,21 @@ function getSelected() {
     return chosenOptions;
 }
 
-// function start_game() {
-//     $.post('/action', {
-//         'action': 'start',
-//         'topics': getSelected()
-//     }).done(function (response) {
-//         console.log(response)
-//     }).fail(function () {
-//         console.log('fail')
-//     });
-// }
-
-
 
 function startGame() {
     var postStart = {'action': 'start', 'topics': getSelected()};
+    console.log(JSON.stringify((postStart)));
     $.ajax({
         type: 'POST',
-        url: '/action',
+        url: '/act',
         data: JSON.stringify(postStart),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         cache: false,
         success: function (response) {
+            console.log(response);
             getEnglish(response);
             getRussian(response);
-            console.log(response);
         },
         failure: function () {
             console.log('fail');
@@ -86,7 +75,7 @@ function prevCard() {
 
 function getEnglish(response) {
     clearWords("english");
-    var englishWords = response[1].english;
+    var englishWords = response.english;
     console.log(englishWords);
     var ul = document.createElement("ul");
     var i;
@@ -109,7 +98,7 @@ function getEnglish(response) {
 
 function getRussian(response) {
     clearWords("russian");
-    var russianWords = response[1].russian;
+    var russianWords = response.russian;
     console.log(russianWords);
     var ul = document.createElement("ul");
     var i;

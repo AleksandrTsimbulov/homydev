@@ -1,3 +1,4 @@
+<!doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -16,15 +17,13 @@
           <div class="menu col-4">
             <button class="ajax_start" onclick="startGame()">quick start</button>
           </div>
-          <div class="welcome col-8">
+          <div class="customize col-8">
             <span class="multiselect-native-select">
                 <select id="custom_topics" multiple="multiple">
-                  <option value="general">general</option>
-                  <option value="Ральф Нейдер">Ральф Нейдер</option>
+                  {% for topic in topics %}
+                    <option value="{{topic}}">{{topic}}</option>
+                  {% endfor %}
 			    </select>
-                <div class="btn-group">
-                    <button type="button" class="multiselect dropdown-toggle btn btn-default" data-toggle="dropdown" title="Customize topics" style="width: 100%; overflow: hidden; text-overflow: ellipsis;"><span class="multiselect-selected-text">Customize topics</span> <b class="caret"></b></button><ul class="multiselect-container dropdown-menu" style="max-height: 200px; overflow-y: auto; overflow-x: hidden;"><li><a tabindex="0"><label class="checkbox" title="general"><input type="checkbox" value="general"> general</label></a></li><li><a tabindex="0"><label class="checkbox" title="Ральф Нейдер"><input type="checkbox" value="Ральф Нейдер"> Ральф Нейдер</label></a></li></ul>
-                </div>
             </span>
           </div>
         </div>
@@ -42,10 +41,10 @@
         </section>
       </div>
       <div class="translems_wrapper" onclick="change_language()">
-      <section id="english">
-      </section>
-      <section id="russian">
-      </section>
+        <section id="english">
+        </section>
+        <section id="russian">
+        </section>
       </div>
     </main>
     <footer class="fixed-bottom">
@@ -55,7 +54,8 @@
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>-->
     <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

@@ -1,5 +1,5 @@
 body {
-    background-image: url("./img/Background.jpg");
+    background-image: url("../img/Background.jpg");
 }
 
 ul li {
@@ -8,24 +8,17 @@ ul li {
 
 header {
     background-color:  rgba(120, 120, 120, 0.7);
-    box-shadow: 2px 4px 5px 0px rgba(0, 0, 0, 0.75);
-    /*width: 320px;*/
-    /*height: 70px;*/
+    box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.75);
     height: 10vh;
-
 }
 
 main {
     height: 80vh;
-    /*background-color: beige;*/
 }
 
 footer {
     background-color:  rgba(205, 205, 205, 0.7);
-    box-shadow: 0 8px 14.85px 0.15px rgba(0, 0, 0, 0.15);
-/*width: 320px;*/
-/*height: 71px;*/
-    /*background-color: green;*/
+    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.15);
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -34,8 +27,6 @@ footer {
 
 .menu {
     display: inline-block;
-    /*height: 50px;*/
-    /*line-height: 50px;*/
 }
 
 .ajax_start {
@@ -47,10 +38,8 @@ footer {
     height: 51px;
 }
 
-.welcome {
+.customize {
     display: inline-block;
-    /*height: 50px;*/
-    /*line-height: 50px;*/
 }
 
 .timer_container {
