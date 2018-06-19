@@ -1,8 +1,8 @@
 
 $(document).ready(function() {
     $('#custom_topics').multiselect({
-        nonSelectedText: 'Customize topics',
+        nonSelectedText: 'Custom',
         maxHeight: 200,
-        buttonWidth: 200
+        buttonWidth: 150,
     });
 });

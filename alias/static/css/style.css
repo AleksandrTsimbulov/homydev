@@ -25,7 +25,11 @@ footer {
     align-items: center;
 }
 
-.menu {
+.main_menu {
+    padding-top: 5px;
+}
+
+.quick_start {
     display: inline-block;
 }
 
@@ -33,20 +37,38 @@ footer {
     border-style: solid;
     border-width: 2px;
     border-color:  #b30000;
-    background-color:  rgba(162, 70, 70, 0);
+    border-radius: 20px;
     width: 142px;
     height: 51px;
+    background-color: transparent;
 }
 
-.customize {
+.chosen_topics {
     display: inline-block;
 }
 
-.timer_container {
-    height: 40px;
-    border: solid 3px blue;
-    width: 50%;
-    margin: 0 auto;
+
+/*.timer_container {*/
+    /*height: 40px;*/
+    /*border: solid 3px blue;*/
+    /*width: 50%;*/
+    /*margin: 0 auto;*/
+/*}*/
+
+.minutes, .delimiter, .seconds {
+    font-family: ClinicaPro;
+    color:  #b30000;
+    font-size: 24px;/* Approximation due to font substitution */
+    font-weight: 400;
+}
+
+.addHalfMinute, .subtractHalfMinute, .reset {
+    background-color: transparent;
+    margin: 5px 10px 0;
+}
+
+.reset {
+    margin-left: 30px;
 }
 
 .translems_wrapper ul {
@@ -66,25 +88,28 @@ footer {
     font-size: 20px;/* Approximation due to font substitution */
     font-weight: 400;
     text-align: center;
+    margin: 0 30px;
 }
 
 .ajax_new {
     width: 25px;
     height: 40px;
-    background-image: url("./img/Right.png");
+    background-image: url("../img/Right.png");
+    background-color: transparent;
     background-repeat: no-repeat;
 }
 
 .ajax_prev {
     width: 25px;
     height: 40px;
-    background-image: url("./img/Left.png");
+    background-image: url("../img/Left.png");
+    background-color: transparent;
     background-repeat: no-repeat;
 }
 
 #timer {
-    line-height: 40px;
-    height: 40px;
+    line-height: 50px;
+    height: 50px;
     text-align: center;
     margin: 0 auto;
 }
