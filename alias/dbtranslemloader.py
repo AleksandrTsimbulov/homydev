@@ -21,14 +21,14 @@ class DbLoader:
             topic_id = Topic.query.filter(Topic.topic_name == self._topic).first().id
         except Exception as exp:
             print('in _load_topic exceptions', exp)
-            topic_id = 'Some weird id'
+            topic_id = None
         if not topic_id:
             db.session.add(Topic(topic_name=self._topic))
         else:
             print(f'Looks like you have already had this {self._topic} in your db')
             exit()
 
-    def _load_tranlems(self, topic_id):
+    def _load_translems(self, topic_id):
         for translem in self._translems:
             db.session.add(Translems(russian=translem[1], english=translem[0], topic_id=topic_id))
 
@@ -40,12 +40,12 @@ class DbLoader:
         topic_id = Topic.query.filter(Topic.topic_name == self._topic).first().id
         print(topic_id)
         try:
-            self._load_tranlems(topic_id)
+            self._load_translems(topic_id)
         except Exception as e:
             print('Translems load exception', e)
         db.session.commit()
 
 
 if __name__ == '__main__':
-    db_loader = DbLoader('../extracter/Translems.xlsx')
+    db_loader = DbLoader('../extracter/homychat.xlsx')
     db_loader.load_translems()

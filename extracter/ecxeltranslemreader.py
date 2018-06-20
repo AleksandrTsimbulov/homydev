@@ -3,7 +3,7 @@ from collections import namedtuple
 
 
 class ExcelExtractor:
-    def __init__(self, excel_translems_file, min_row=5, max_col=2, max_row=1000, topic_cell='B3'):
+    def __init__(self, excel_translems_file, min_row=5, max_col=2, max_row=10000, topic_cell='B3'):
         self._min_row = min_row
         self._max_col = max_col
         self._max_row = max_row
@@ -20,7 +20,8 @@ class ExcelExtractor:
                 break
             new_translem = Translem(excel_row[0].value, excel_row[1].value)
             translem_list.append((new_translem.english, new_translem.russian))
-        return translem_list
+        no_repeats_translem_list = list(set(translem_list))
+        return no_repeats_translem_list
 
     def get_topic(self):
         return self._working_sheet[f'{self._topic_cell}'].value
