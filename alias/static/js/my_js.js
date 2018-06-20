@@ -71,10 +71,10 @@ function controlTimer() {
     if (window.isFirstStart === 1 || window.isTimer === 0) {
         console.log('in control');
         startTimer();
-        document.querySelector('.control_timer').innerHTML = 'stop';
+        document.querySelector('.control_timer').innerHTML = 'STOP';
     } else if (window.isTimer === 1) {
         stopTimer();
-        document.querySelector('.control_timer').innerHTML = 'resume';
+        document.querySelector('.control_timer').innerHTML = 'RESUME';
     } else {
         console.log('I do not know how I got here!');
     }
@@ -92,7 +92,7 @@ function initiate_timer() {
     window.totalSeconds = 120;
     window.isFirstStart = 1;
     window.isTimer = 0;
-    document.querySelector('.control_timer').innerHTML = 'start';
+    document.querySelector('.control_timer').innerHTML = 'START';
     showTimer();
 }
 // timer realization ends

@@ -8,7 +8,7 @@ ul li {
 
 header {
     background-color:  rgba(120, 120, 120, 0.7);
-    box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.75);
+    /*box-shadow: 2px 4px 5px 0 rgba(0, 0, 0, 0.75);*/
     height: 10vh;
 }
 
@@ -18,7 +18,7 @@ main {
 
 footer {
     background-color:  rgba(205, 205, 205, 0.7);
-    box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.15);
+    /*box-shadow: 0 8px 15px 0 rgba(0, 0, 0, 0.15);*/
     height: 10vh;
     display: flex;
     justify-content: center;
@@ -34,9 +34,7 @@ footer {
 }
 
 .ajax_start {
-    border-style: solid;
-    border-width: 2px;
-    border-color:  #b30000;
+    border: 2px solid #b30000;
     border-radius: 20px;
     width: 142px;
     height: 51px;
@@ -46,14 +44,6 @@ footer {
 .chosen_topics {
     display: inline-block;
 }
-
-
-/*.timer_container {*/
-    /*height: 40px;*/
-    /*border: solid 3px blue;*/
-    /*width: 50%;*/
-    /*margin: 0 auto;*/
-/*}*/
 
 .minutes, .delimiter, .seconds {
     font-family: ClinicaPro;
@@ -65,6 +55,7 @@ footer {
 .addHalfMinute, .subtractHalfMinute, .reset {
     background-color: transparent;
     margin: 5px 10px 0;
+    border: 0;
 }
 
 .reset {
@@ -82,29 +73,29 @@ footer {
 .control_timer {
     width: 142px;
     height: 51px;
-    background-color: inherit;
+    background-color: transparent;
     font-family: ClinicaPro;
     color:  #b30000;
     font-size: 20px;/* Approximation due to font substitution */
     font-weight: 400;
     text-align: center;
     margin: 0 30px;
+    border: 2px solid #b30000;
+    border-radius: 20px;
 }
 
 .ajax_new {
     width: 25px;
     height: 40px;
-    background-image: url("../img/Right.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
+    background: url("../img/Right.png") transparent no-repeat;
+    border: 0;
 }
 
 .ajax_prev {
     width: 25px;
     height: 40px;
-    background-image: url("../img/Left.png");
-    background-color: transparent;
-    background-repeat: no-repeat;
+    background: url("../img/Left.png") transparent no-repeat;
+    border: 0;
 }
 
 #timer {
