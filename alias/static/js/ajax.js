@@ -11,7 +11,6 @@ function getSelected() {
     return chosenOptions;
 }
 
-
 function startGame() {
     var postStart = {'action': 'start', 'topics': getSelected()};
     console.log(JSON.stringify((postStart)));
