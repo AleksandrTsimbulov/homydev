@@ -1,6 +1,7 @@
 import random
 
 from flask import render_template, flash, redirect, url_for, request, jsonify
+from flask import abort
 from alias import app, db
 from alias.forms import LoginForm, RegistrationForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -10,7 +11,7 @@ from werkzeug.urls import url_parse
 
 @app.route('/')
 @app.route('/index')
-# @login_required
+@login_required
 def index():
     topics = get_topics()
     return render_template('index.html', topics=topics)
@@ -22,47 +23,58 @@ def get_topics():
     return topics
 
 
-# @app.route('/login', methods=['GET', 'POST'])
-# def login():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('index'))
-#     form = LoginForm()
-#     if form.validate_on_submit():
-#         user = User.query.filter_by(username=form.username.data).first()
-#         if user is None or not user.check_password(form.password.data):
-#             flash('Invalid username or password')
-#             return redirect(url_for('login'))
-#         login_user(user, remember=form.remember_me.data)
-#         next_page = request.args.get('next')
-#         if not next_page or url_parse(next_page).netloc != '':
-#             next_page = url_for('index')
-#         return redirect(next_page)
-#     return render_template('login.html', title='Sign In', form=form)
-#
-#
-# @app.route('/logout')
-# def logout():
-#     logout_user()
-#     return redirect(url_for('index'))
-#
-#
-# @app.route('/register', methods=['GET', 'POST'])
-# def register():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('index'))
-#     form = RegistrationForm()
-#     if form.validate_on_submit():
-#         user = User(username=form.username.data, email=form.email.data)
-#         user.set_password(form.password.data)
-#         db.session.add(user)
-#         db.session.commit()
-#         flash('Congratulations, you are now a registered user!')
-#         return redirect(url_for('login'))
-#     return render_template('register.html', title='Register', form=form)
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash('Invalid username or password')
+            return redirect(url_for('login'))
+        login_user(user, remember=form.remember_me.data)
+        next_page = request.args.get('next')
+        if not next_page or url_parse(next_page).netloc != '':
+            next_page = url_for('index')
+        return redirect(next_page)
+    return render_template('login.html', title='Sign In', form=form)
 
 
-@app.route('/act', methods=['GET', 'POST'])
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('login'))
+    return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/act', methods=['POST'])
+@login_required
 def act():
+    """
+        {'action': possible_actions,
+            'topics': [ chosen topics or None]}
+            where possible_actions can be strings:
+                'start',
+                'next_card',
+                'prev_card',
+    """
+    if request.method != 'POST':
+        return abort(404)
     action = request.get_json()
     print(action)
     if action['action'] == 'start':
@@ -89,7 +101,8 @@ class GameController:
     def start_game(cls, action):
         cls._clear_game()
         if not action['topics']:
-            topics = ['origin']
+            print('WAYFHYS')
+            topics = ['original']
         else:
             topics = action['topics']
         topic_ids = cls._get_id_for_topics(topics)
@@ -135,7 +148,8 @@ class GameController:
 
     @staticmethod
     def _get_id_for_topics(list_of_topics):
-        return [db.session.query(Topic.id).filter(Topic.topic_name == topic).first()[0] for topic in list_of_topics]
+        return [Topic.get_id_by_name(topic) for topic in list_of_topics]
+        # return [db.session.query(Topic.id).filter(Topic.topic_name == topic).first()[0] for topic in list_of_topics]
 
     @staticmethod
     def _get_translem_id(topic_ids):

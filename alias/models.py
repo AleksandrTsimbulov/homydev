@@ -10,6 +10,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
+    is_teacher = db.Column(db.Boolean, default=False)
 
     def __repr__(self):
         return f'<User {self.username}>'
@@ -43,6 +44,9 @@ class Topic(db.Model):
     def __repr__(self):
         return f'<Table> {self.__tablename__}'
 
+    @staticmethod
+    def get_id_by_name(name):
+        return Topic.query.filter(Topic.topic_name == name).first().id
 
 @login.user_loader
 def load_user(id):
