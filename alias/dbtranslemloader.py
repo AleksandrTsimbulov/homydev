@@ -47,5 +47,5 @@ class DbLoader:
 
 
 if __name__ == '__main__':
-    db_loader = DbLoader('../extracter/animals.xlsx')
+    db_loader = DbLoader('../extracter/homychat.xlsx')
     db_loader.load_translems()

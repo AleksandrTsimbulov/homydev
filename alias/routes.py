@@ -96,16 +96,16 @@ class GameController:
     used_cards = []
     consecutive_card_number = 0
     translem_ids = []
+    topics = []
 
     @classmethod
     def start_game(cls, action):
         cls._clear_game()
         if not action['topics']:
-            print('WAYFHYS')
-            topics = ['original']
+            cls.topics = ['original']
         else:
-            topics = action['topics']
-        topic_ids = cls._get_id_for_topics(topics)
+            cls.topics = action['topics']
+        topic_ids = cls._get_id_for_topics(cls.topics)
         cls.translem_ids = cls._get_translem_id(topic_ids)
         return cls.next_card()
 
@@ -133,30 +133,31 @@ class GameController:
             resp = cls.used_cards[cls.consecutive_card_number - 1]
         return resp
 
-    @staticmethod
-    def _clear_game():
-        __class__.used_cards = []
-        __class__.consecutive_card_number = 0
-        __class__.translem_ids = []
+    @classmethod
+    def _clear_game(cls):
+        cls.used_cards = []
+        cls.consecutive_card_number = 0
+        cls.translem_ids = []
 
-    @staticmethod
-    def _get_new_card():
-        random_translem_ids = __class__._get_random_8_translem_ids_from(__class__.translem_ids)
-        russian_words, english_words = __class__._get_translems(random_translem_ids)
+    @classmethod
+    def _get_new_card(cls):
+        if len(cls.translem_ids) <= 8:
+            topic_ids = cls._get_id_for_topics(cls.topics)
+            cls.translem_ids = cls._get_translem_id(topic_ids)
+        random_translem_ids = cls._get_random_8_translem_ids_from(cls.translem_ids)
+        russian_words, english_words = cls._get_translems(random_translem_ids)
         resp = {'english': english_words, 'russian': russian_words}
         return resp
 
     @staticmethod
     def _get_id_for_topics(list_of_topics):
         return [Topic.get_id_by_name(topic) for topic in list_of_topics]
-        # return [db.session.query(Topic.id).filter(Topic.topic_name == topic).first()[0] for topic in list_of_topics]
 
     @staticmethod
     def _get_translem_id(topic_ids):
         translem_ids = []
         for topic_id in topic_ids:
-            the_ids = db.session.query(Translems.id).filter(Translems.topic_id == topic_id).all()
-            translem_ids.extend([value for (value,) in the_ids])
+            translem_ids.extend(Translems.get_ids_by_topic_id(topic_id))
         return translem_ids
 
     @staticmethod
@@ -167,9 +168,8 @@ class GameController:
     def _get_translems(translem_ids):
         russian = []
         english = []
-        for id in translem_ids:
-            translem = db.session.query(Translems.russian, Translems.english).filter(Translems.id == id).first()
-            russian.append(translem[0])
-            english.append(translem[1])
+        for translem_id in translem_ids:
+            russian.append(Translems.get_russian(translem_id))
+            english.append(Translems.get_english(translem_id))
         print(russian, english)
         return russian, english

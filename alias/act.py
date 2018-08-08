@@ -1,9 +1,22 @@
-from flask import request, abort
+from flask import request, abort, redirect, flash, render_template, url_for, jsonify
+from flask_login import current_user, login_user, logout_user, login_required
 from alias.game_controller import GameController, CurrentGames
-from datetime import datetime
-import time
+from alias.models import User
+from alias.forms import LoginForm, RegistrationForm
+from alias import app, db
+from werkzeug.urls import url_parse
+
 
 current_games = CurrentGames()
+
+
+def create_game(user, controller):
+    current_games.add_game(user, controller)
+
+
+def remove_game(user):
+    current_games.del_game(user)
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -19,15 +32,20 @@ def login():
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
+
+        create_game(current_user, GameController(current_user))
+
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 
 @app.route('/logout')
 def logout():
+
+    remove_game(current_user)
+
     logout_user()
     return redirect(url_for('index'))
-
 
 
 @app.route('/act', methods=['POST'])
@@ -45,15 +63,16 @@ def act():
         return abort(404)
     action = request.get_json()
     print(action)
+    game_controller = current_games.get_game(current_user)
     if action['action'] == 'start':
         print('in start')
-        resp = GameController.start_game(action)
+        resp = game_controller.start_game(action)
     elif action['action'] == 'next_card':
         print('in next')
-        resp = GameController.next_card()
+        resp = game_controller.next_card()
     elif action['action'] == 'prev_card':
         print('in prev')
-        resp = GameController.prev_card()
+        resp = game_controller.prev_card()
     else:
         print('There is an action request error!')
         resp = None
