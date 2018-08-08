@@ -63,6 +63,10 @@ class Topic(db.Model):
     def get_id_by_name(name):
         return Topic.query.filter(Topic.topic_name == name).first().id
 
+    @staticmethod
+    def get_topic_names():
+        return [_.topic_name for _ in Topic.query.all()]
+
 
 @login.user_loader
 def load_user(id):

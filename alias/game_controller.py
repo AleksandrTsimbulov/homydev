@@ -1,14 +1,13 @@
-from random import random
+import random
 from datetime import datetime
 
-from alias import db
-from alias.models import User, Topic, Translems
+from alias.models import Topic, Translems
 
 
 class GameController:
     def __init__(self, user):
         self.creation_time = datetime.now()
-        self._user = user
+        self._user = str(user)
         self.used_cards = []
         self.order_card_number = 0
         self.translem_ids = []
@@ -38,7 +37,7 @@ class GameController:
             resp = self.used_cards[self.order_card_number]
             self.order_card_number += 1
         else:
-            print(print('Unexpected operation for next_card', self.order_card_number, self.used_cards))
+            print('Unexpected operation for next_card', self.order_card_number, self.used_cards)
             resp = None
         return resp
 
@@ -65,6 +64,7 @@ class GameController:
             self.translem_ids = self._get_translem_id(topic_ids)
 
         random_translem_ids = self._get_random_8_translem_ids_from(self.translem_ids)
+
         russian_words, english_words = self._get_translems(random_translem_ids)
         return {'english': english_words, 'russian': russian_words}
 
@@ -92,10 +92,11 @@ class CurrentGames:
         self.games = {}
 
     def add_game(self, username, game_controller):
-        self.games[username] = game_controller
+        self.games[str(username)] = game_controller
         self._remove_old()
 
     def del_game(self, username):
+        username = str(username)
         if username in self.games:
             del self.games[username]
         self._remove_old()
@@ -108,5 +109,9 @@ class CurrentGames:
                 del self.games[key]
 
     def get_game(self, username):
-        if username in self.games:
+        username = str(username)
+        if username in self.games.keys():
+            return self.games[username]
+        else:
+            self.add_game(username, GameController(username))
             return self.games[username]
