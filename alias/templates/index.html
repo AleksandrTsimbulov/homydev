@@ -2,11 +2,12 @@
 
 {% block index %}
 <body onload="initiate_timer()">
+  <audio id="end_sound" src="{{ url_for('static', filename='audio/time_is_over.ogg') }}"></audio>
   <header>
     <div class="container main_menu">
       <div class="row">
         <div class="quick_start col-6">
-          <button class="ajax_start" onclick="startGame()"><img src="{{ url_for('static', filename='img/QUICK START.png') }}" alt="Start Game"></button>
+          <button id="full" class="ajax_start" onclick="startGame()"><img src="{{ url_for('static', filename='img/QUICK START.png') }}" alt="Start Game"></button>
         </div>
         <div class="chosen_topics col-6">
           <select id="custom_topics" multiple="multiple">

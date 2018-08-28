@@ -62,9 +62,7 @@ class GameController:
         if len(self.translem_ids) <= 8:
             topic_ids = self._get_id_for_topics(self.topics)
             self.translem_ids = self._get_translem_id(topic_ids)
-
         random_translem_ids = self._get_random_8_translem_ids_from(self.translem_ids)
-
         russian_words, english_words = self._get_translems(random_translem_ids)
         return {'english': english_words, 'russian': russian_words}
 

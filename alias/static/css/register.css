@@ -1,0 +1,67 @@
+.screen {
+    width: 100%;
+    height: 100%;
+
+    background: linear-gradient(
+            306.99deg, #1CA38C 20.7%,
+            rgba(93, 153, 213, 0.59) 53.95%,
+            rgba(255, 255, 255, 0.04) 94.93%),
+            #0F2C59;
+}
+
+.form_block {
+    width: 180px;
+    height: 55px;
+    text-align: left;
+}
+
+.label {
+    width: 101px;
+    height: 22px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 18px;
+    letter-spacing: 0.03em;
+
+    color: #FFEDC2;
+}
+
+.input_text {
+    width: 180px;
+    height: 25px;
+
+    background: rgba(255, 237, 194, 0.35);
+}
+
+.user {
+    margin-top: 105px;
+}
+
+.email {
+    margin-top: 10px;
+}
+
+.password {
+    margin-top: 10px;
+}
+
+.submit_button {
+    width: 140px;
+    height: 40px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 0.03em;
+    border-radius: 10px;
+    margin-top: 35px;
+
+    color: #05296E;
+    background: #FFEDC2;
+}

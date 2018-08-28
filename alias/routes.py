@@ -104,3 +104,9 @@ def act():
 def index():
     topics = Topic.get_topic_names()
     return render_template('index.html', topics=topics)
+
+
+@app.route('/welcome')
+def welcome():
+    title = 'welcome'
+    return render_template('welcome.html', title=title)

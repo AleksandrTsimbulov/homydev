@@ -1,37 +1,42 @@
 {% extends "base.html" %}
 
+{% block css_links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
 {% block content %}
-    <h1>Register</h1>
-    <form action="" method="post">
+    <body>
+        <form class="flex-container screen" action="" method="post">
         {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}<br>
+        <div class="form_block user">
+            {{ form.username.label(class_='label') }}<br>
+            {{ form.username(size=32, class_='input_text') }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=64) }}<br>
+        </div>
+        <div class="form_block email">
+            {{ form.email.label(class_='label') }}<br>
+            {{ form.email(size=64, class_='input_text') }}<br>
             {% for error in form.email.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}<br>
+        </div>
+        <div class="form_block password">
+            {{ form.password.label(class_='label') }}<br>
+            {{ form.password(size=32, class_='input_text') }}<br>
             {% for error in form.password.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>
-            {{ form.password2.label }}<br>
-            {{ form.password2(size=32) }}<br>
+        </div>
+        <div class="form_block password">
+            {{ form.password2.label(class_='label') }}<br>
+            {{ form.password2(size=32, class_='input_text') }}<br>
             {% for error in form.password2.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
+        </div>
+        {{ form.submit(class_='submit_button') }}
+        </form>
+    </body>
 {% endblock %}

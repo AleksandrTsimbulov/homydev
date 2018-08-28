@@ -57,6 +57,7 @@ function startTimer() {
         window.totalSeconds -= 1;
         showTimer();
         if (window.totalSeconds <= 0) {
+            play_time_is_over();
             stopTimer();
         }
     }, 1000);
@@ -96,3 +97,30 @@ function initiate_timer() {
     showTimer();
 }
 // timer realization ends
+
+// sound player
+function play_time_is_over() {
+    var sound = document.getElementById('end_sound');
+    sound.play();
+}
+
+// make it fullscreen
+function toggleFullScreen() {
+    console.log('I am here!');
+  var doc = window.document;
+  var docEl = doc.documentElement;
+
+  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    requestFullScreen.call(docEl);
+  }
+  else {
+    cancelFullScreen.call(doc);
+  }
+}
+
+
+var goFS = document.getElementById("full");
+goFS.addEventListener("click", toggleFullScreen);
