@@ -12,11 +12,33 @@ body {
     padding: 0;
 }
 
+div, span {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation {
+    text-align: center;
+}
+
+.vertical_align {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quick {
+    margin-right: 20px;
+    margin-top: 10px;
+}
+
 .flex-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
+
 
 .small_button {
     width: 140px;
@@ -44,6 +66,38 @@ body {
     font-weight: bold;
     line-height: normal;
     font-size: 20px;
+    text-align: center;
+
+    color: #05296E;
+}
+
+.big_button {
+    width: 220px;
+    height: 60px;
+    background: #FFEDC2;
+    border-radius: 10px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 20px;
+    text-align: center;
+
+    color: #05296E;
+}
+
+.arrow {
+    width: 80px;
+    height: 38px;
+    background: #FFEDC2;
+    border-radius: 10px;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 40px;
     text-align: center;
 
     color: #05296E;

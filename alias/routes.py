@@ -110,3 +110,21 @@ def index():
 def welcome():
     title = 'welcome'
     return render_template('welcome.html', title=title)
+
+
+@app.route('/study')
+def study():
+    title = 'study'
+    return render_template('study.html', title=title)
+
+
+@app.route('/for_fun')
+def for_fun():
+    title = 'for fun'
+    return render_template('for_fun.html', title=title)
+
+
+@app.route('/game')
+def game():
+    title = 'game'
+    return render_template('game.html', title=title)

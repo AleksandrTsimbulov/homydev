@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block css_links %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+{% endblock %}
+
+{% block content %}
+    <body>
+        <div class="wrapper flex-container">
+            <div class="navigation">
+                <button class="small_button quick">New game</button>
+                <button class="small_button">Log out</button>
+            </div>
+            <div class="time_wrapper flex_row">
+                <div class="small_timer flex_row">
+                    <div class="plus vertical_align"><span>+</span></div>
+                    <div class="time">
+                        <span class="munutes">2</span>
+                        <span class="delimiter">:</span>
+                        <span class="seconds">00</span>
+                    </div>
+                    <div class="minus vertical_align"><span>-</span></div>
+                </div>
+                <div class="reset vertical_align"><span>reset</span></div>
+            </div>
+            <div class="game_board">
+                <div class="translem_wrapper">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the mall and what about more words</span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the mall and what about</span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the mall and what </span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the mall and</span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the mall</span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at the</span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping </span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span class="words">shopping at </span>
+                </div>
+            </div>
+            <div class="control_wrapper flex_row">
+                <div class="prev "><span class="arr">«</span><span class="notation">prev</span></div>
+                <button class="start_timer"><span>Start timer</span></button>
+                <div class="next"><span class="arr">»</span><span class="notation">next</span></div>
+            </div>
+        </div>
+    </body>
+{% endblock %}
