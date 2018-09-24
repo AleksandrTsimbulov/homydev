@@ -1,15 +1,19 @@
 html {
-    min-height: 560px;
     height: 100%;
 }
 
 body {
+    width: 100%;
     height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
-    width: 100%;
+    overflow: auto;
+
     background: linear-gradient(
         306.99deg, #1CA38C 20.7%,
         rgba(93, 153, 213, 0.59) 53.95%,
@@ -22,7 +26,6 @@ body {
 }
 
 body {
-    /*border: none;*/
     margin: 0;
     padding: 0;
 }
@@ -32,19 +35,11 @@ div, span {
     padding: 0;
 }
 
-.navigation {
-    margin-top: 5px;
-    width: 90%;
-    display: flex;
-    justify-content: space-between;
-}
-
 .vertical_align {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .flex-container{
     display: flex;
@@ -52,66 +47,69 @@ div, span {
     align-items: center;
 }
 
+.navigation {
+    width: 660px;
+    height: 70px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
 
 .small_button {
-    width: 140px;
-    height: 40px;
+    width: 180px;
+    height: 60px;
+    border-radius: 6px;
+
     background: #FFEDC2;
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
-    line-height: normal;
-    font-size: 18px;
+    font-size: 24px;
     text-align: center;
-    border-radius: 10px;
-
     color: #05296E;
 }
 
 .average_button {
-    width: 180px;
-    height: 60px;
+    width: 260px;
+    height: 80px;
     background: #FFEDC2;
-    border-radius: 10px;
+    border-radius: 6px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
-
     color: #05296E;
 }
 
 .big_button {
-    width: 220px;
-    height: 60px;
+    width: 420px;
+    height: 100px;
     background: #FFEDC2;
-    border-radius: 10px;
+    border-radius: 6px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 20px;
+    font-size: 30px;
     text-align: center;
-
     color: #05296E;
 }
 
 .arrow {
-    width: 80px;
-    height: 38px;
+    width: 150px;
+    height: 55px;
     background: #FFEDC2;
-    border-radius: 10px;
+    border-radius: 6px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 40px;
+    font-size: 48px;
     text-align: center;
-
     color: #05296E;
 }

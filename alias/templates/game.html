@@ -1,21 +1,22 @@
 {% extends "base.html" %}
 
 {% block css_links %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/game.css') }}">
+<link rel="stylesheet" media='not screen and (min-width: 680px) and (min-height: 880px)' href="{{ url_for('static', filename='css/game.css') }}">
+<link rel="stylesheet" media="(min-width: 680px) and (min-height: 880px)" href="{{ url_for('static', filename='css/game_full.css') }}">
 {% endblock %}
 
 {% block content %}
     <body>
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button quick">New game</button>
+                <button class="small_button">New game</button>
                 <button class="small_button">Log out</button>
             </div>
             <div class="time_wrapper flex_row">
                 <div class="small_timer flex_row">
                     <div class="plus vertical_align"><span>+</span></div>
                     <div class="time">
-                        <span class="munutes">2</span>
+                        <span class="minutes">2</span>
                         <span class="delimiter">:</span>
                         <span class="seconds">00</span>
                     </div>
@@ -24,17 +25,17 @@
                 <div class="reset vertical_align"><span>reset</span></div>
             </div>
             <div class="game_board">
-                <div class="translem_wrapper">
+                     <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall and what about more words</span>
+                    <span class="words">shopping at mmk mlm tmmmmmmmmm mmmm mall</span>
                 </div>
-                <div class="translem_wrapper ">
+                    <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall and what about</span>
+                    <span class="words">shopping at the majjlj jlj ljl ljlll</span>
                 </div>
-                <div class="translem_wrapper ">
+               <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall and what </span>
+                    <span class="words">shopping at the mall</span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">

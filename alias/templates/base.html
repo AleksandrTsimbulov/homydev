@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+	<link rel="stylesheet" media='not screen and (min-width: 681px) and (min-height: 880px)' href="{{ url_for('static', filename='css/base.css') }}">
+    <link rel="stylesheet" media="(min-width: 681px) and (min-height: 880px)" href="{{ url_for('static', filename='css/base_full.css') }}">
       {% block css_links %}{% endblock %}
     <title>{{ title }}</title>
   </head>
