@@ -1,12 +1,11 @@
 .wrapper {
-    max-width: 450px;
+    width: 660px;
     margin: 0 auto;
-    width: 100%;
 }
 
 .form_block {
-    width: 180px;
-    height: 55px;
+    width: 320px;
+    height: 70px;
     text-align: center;
 }
 
@@ -19,19 +18,19 @@
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 18px;
+    font-size: 24px;
     letter-spacing: 0.03em;
     color: #FFEDC2;
 }
 
 .input_text {
-    width: 180px;
-    height: 25px;
+    width: 320px;
+    height: 30px;
     background: rgba(255, 237, 194, 0.35);
 }
 
 .remember_me {
-    width: 180px;
+    width: 185px;
     height: 20px;
     text-align: left;
     margin-top: 25px;
@@ -42,10 +41,10 @@
 }
 
 .submit {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .new_user {
-    font-size: 14px;
-    margin-top: 15px;
+    font-size: 16px;
+    margin-top: 20px;
 }

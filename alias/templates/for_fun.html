@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
 {% block css_links %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/for_fun.css') }}">
+    <link rel="stylesheet" media='not screen and (min-width: 680px) and (min-height: 880px)' href="{{ url_for('static', filename='css/for_fun.css') }}">
+    <link rel="stylesheet" media="(min-width: 680px) and (min-height: 880px)" href="{{ url_for('static', filename='css/for_fun_full.css') }}">
 {% endblock %}
 
 {% block content %}
     <body>
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button quick">New game</button>
+                <button class="small_button">New game</button>
                 <button class="small_button">Log out</button>
             </div>
             <div class="big_button first_topic vertical_align"><span>Homy_usual</span></div>

@@ -1,0 +1,26 @@
+.wrapper {
+    width: 660px;
+    height: 870px;
+    margin: 0 auto;
+}
+
+
+.first_topic {
+    margin-top: 150px;
+}
+
+.another_topic {
+    margin-top: 50px;
+}
+
+.arrow_nav {
+    width: 420px;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.start_game {
+    margin-top: 40px;
+}

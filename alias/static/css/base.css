@@ -1,15 +1,16 @@
 html {
     min-height: 560px;
     height: 100%;
+    width: 100%;
 }
 
 body {
     height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     align-content: center;
     justify-content: center;
-    width: 100%;
     background: linear-gradient(
         306.99deg, #1CA38C 20.7%,
         rgba(93, 153, 213, 0.59) 53.95%,
@@ -45,13 +46,11 @@ div, span {
     align-items: center;
 }
 
-
 .flex-container{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-
 
 .small_button {
     width: 140px;

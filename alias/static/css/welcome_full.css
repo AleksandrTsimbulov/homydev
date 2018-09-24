@@ -1,33 +1,33 @@
 .wrapper {
-    max-width: 450px;
+    width: 660px;
+    /*height: 870px;*/
     margin: 0 auto;
-    width: 100%;
 }
 
 .welcome {
-    margin-top: 70px;
+    margin-top: 170px;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 28px;
+    font-size: 64px;
     letter-spacing: 0.05em;
 
     color: #FFEDC2;
 }
 
 .what_to_do {
-    width: 260px;
-    height: 60px;
-    margin-top: 40px;
+    width: 600px;
+    height: 120px;
+    margin-top: 60px;
     display: inline-block;
 
     font-family: Montserrat;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 24px;
+    font-size: 48px;
     text-align: center;
     letter-spacing: 0.03em;
 
@@ -35,9 +35,9 @@
 }
 
 .play_for_fun {
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 .study_and_play {
-    margin-top: 40px;
+    margin-top: 50px;
 }

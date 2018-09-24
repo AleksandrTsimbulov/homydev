@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 
 {% block css_links %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" media='not screen and (min-width: 680px) and (min-height: 880px)' href="{{ url_for('static', filename='css/login.css') }}">
+<link rel="stylesheet" media="(min-width: 680px) and (min-height: 880px)" href="{{ url_for('static', filename='css/login_full.css') }}">
 {% endblock %}
 
 {% block content %}
     <body>
-        <div class="screen flex-container">
+        <div class="wrapper flex-container">
             <form class='flex-container' action="" method="post">
                 {{ form.hidden_tag() }}
-                <div class="form_block user">
+                <div class="form_block">
                     {{ form.username.label(class_='label') }}
                     {{ form.username(size=32, class_='input_text') }}
                     {% for error in form.username.errors %}
@@ -24,11 +25,11 @@
                     {% endfor %}
                 </div>
                 <div class="remember_me">
-                    {{ form.remember_me(class_='submit_radiobutton') }} {{ form.remember_me.label(class_='remember_text') }}
+                    {{ form.remember_me(class_='submit_radiobutton') }} {{ form.remember_me.label(class_='label remember_text') }}
                 </div>
-                {{ form.submit(class_='submit_button') }}
+                {{ form.submit(class_='small_button submit') }}
             </form>
-            <div class="new_user">
+            <div class="label new_user">
                New User? <a href="{{ url_for('register') }}">Click to Register!</a>
             </div>
         </div>

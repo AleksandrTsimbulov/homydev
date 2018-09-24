@@ -1,25 +1,25 @@
-
 .wrapper {
-    max-width: 450px;
+    width: 660px;
+    /*height: 870px;*/
     margin: 0 auto;
-    width: 100%;
 }
 
 .first_topic {
-    margin-top: 90px;
+    margin-top: 170px;
 }
 
 .another_topic {
-    margin-top: 40px;
+    margin-top: 70px;
 }
 
 .transparent {
+    width: 600px;
+    height: 60px;
     background: none;
     border: none;
     font-style: normal;
     font-weight: bold;
     line-height: normal;
-    font-size: 20px;
     text-align: center;
     letter-spacing: 0.05em;
 
@@ -27,5 +27,5 @@
 }
 
 .start_game {
-    margin-top: 50px;
+    margin-top: 34px;
 }
