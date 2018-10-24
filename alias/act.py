@@ -2,10 +2,9 @@ from flask import request, abort, redirect, flash, render_template, url_for, jso
 from flask_login import current_user, login_user, logout_user, login_required
 from alias.game_controller import GameController, CurrentGames
 from alias.models import User
-from alias.forms import LoginForm, RegistrationForm
-from alias import app, db
+from alias.forms import LoginForm
+from alias import app
 from werkzeug.urls import url_parse
-
 
 current_games = CurrentGames()
 

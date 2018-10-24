@@ -112,4 +112,5 @@ div, span {
     font-size: 48px;
     text-align: center;
     color: #05296E;
+    visibility: hidden;
 }

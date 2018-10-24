@@ -6,16 +6,16 @@
 {% endblock %}
 
 {% block content %}
-    <body>
+    <body onload="initiateTopicList()">
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button">New game</button>
-                <button class="small_button">Log out</button>
+                <button class="small_button" onclick="backToMenu()">Back to menu</button>
+                <button class="small_button" onclick="logOut()">Log out</button>
             </div>
-            <div class="big_button first_topic vertical_align"><span>Homy_usual</span></div>
-            <div class="big_button another_topic vertical_align"><span>Homy_extension</span></div>
-            <button class="big_button transparent another_topic vertical_align"><span>Choose one or both options</span></button>
-            <button class="average_button start_game"><span>Start game</span></button>
+            <button class="big_button first_topic vertical_align" onclick="selectTopic(this)"><span>regular alias words</span></button>
+            <button class="big_button another_topic vertical_align" onclick="selectTopic(this)"><span>exclusive extension</span></button>
+            <div class="big_button transparent another_topic vertical_align"><span>Choose one or both options</span></div>
+            <button class="average_button start_game" onclick="startGame()"><span>Start game</span></button>
         </div>
     </body>
 {% endblock %}

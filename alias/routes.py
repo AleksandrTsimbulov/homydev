@@ -22,7 +22,7 @@ def remove_game(user):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('welcome'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User()
@@ -39,7 +39,7 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('welcome'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
@@ -49,7 +49,7 @@ def login():
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('welcome')
 
         create_game(current_user, GameController(current_user))
 
@@ -59,11 +59,9 @@ def login():
 
 @app.route('/logout')
 def logout():
-
     remove_game(current_user)
-
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('welcome'))
 
 
 @app.route('/act', methods=['POST'])
@@ -76,6 +74,7 @@ def act():
                 'start',
                 'next_card',
                 'prev_card',
+                'add_topics',
     """
     if request.method != 'POST':
         return abort(404)
@@ -85,7 +84,10 @@ def act():
     game_controller = current_games.get_game(current_user)
     if action['action'] == 'start':
         print('in start')
-        resp = game_controller.start_game(action)
+        resp = game_controller.start_game()
+    elif action['action'] == 'add_topics':
+        print('topics received')
+        resp = game_controller.add_topics(action['topics'])
     elif action['action'] == 'next_card':
         print('in next')
         resp = game_controller.next_card()
@@ -103,7 +105,8 @@ def act():
 @login_required
 def index():
     topics = Topic.get_topic_names()
-    return render_template('index.html', topics=topics)
+    return redirect(url_for('welcome'))
+    # return render_template('welcome.html', topics=topics)
 
 
 @app.route('/welcome')

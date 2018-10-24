@@ -1,6 +1,5 @@
 import random
 from datetime import datetime
-
 from alias.models import Topic, Translems
 
 
@@ -17,18 +16,17 @@ class GameController:
     def user(self):
         return self._user
 
-    def start_game(self, action):
+    def start_game(self):
         self.clear_game()
-        if not action['topics']:
-            topics = ['original']
-        else:
-            topics = action['topics']
-        self.topics = topics
+        if not self.topics:
+            self.topics.append('regular_alias_words')
         topic_ids = self._get_id_for_topics(self.topics)
         self.translem_ids = self._get_translem_id(topic_ids)
         return self.next_card()
 
     def next_card(self):
+        if not self.translem_ids:
+            return self.start_game()
         if len(self.used_cards) == self.order_card_number:
             resp = self._get_new_card()
             self.order_card_number += 1
@@ -83,6 +81,12 @@ class GameController:
             english.append(Translems.get_english(translem_id))
         print(russian, english)
         return russian, english
+
+    def add_topics(self, topics=None):
+        if not topics:
+            topics = []
+        self.topics.extend(topics)
+        return self.topics
 
 
 class CurrentGames:

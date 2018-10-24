@@ -9,13 +9,13 @@
     <body>
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button quick">Quick game</button>
-                <button class="small_button">Log out</button>
+                <button class="small_button quick" onclick="quickStart()">Quick game</button>
+                <button class="small_button" onclick="logOut()">Log out</button>
             </div>
             <div class="welcome"><span>Welcome!</span></div>
             <div class="what_to_do"><span>What do you want to do today?</span></div>
-            <button class="average_button play_for_fun"><span>Play for fun</span></button>
-            <button class="average_button study_and_play"><span>Study and play</span></button>
+            <button class="average_button play_for_fun" onclick="goToFun()"><span>Play for fun</span></button>
+            <button class="average_button study_and_play" onclick="goToStudy()"><span>Study and play</span></button>
         </div>
     </body>
 {% endblock %}

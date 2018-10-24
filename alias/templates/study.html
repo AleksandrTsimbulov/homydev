@@ -6,20 +6,20 @@
 {% endblock %}
 
 {% block content %}
-    <body>
+    <body onload="initiateTopicList()">
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button quick">New game</button>
-                <button class="small_button">Log out</button>
+                <button class="small_button quick" onclick="backToMenu()">Back to menu</button>
+                <button class="small_button" onclick="logOut()">Log out</button>
             </div>
-            <div class="big_button first_topic vertical_align"><span>Phrasal verbs</span></div>
-            <div class="big_button another_topic vertical_align"><span>Expressions from movies</span></div>
-            <button class="big_button another_topic vertical_align"><span>... another advanced topic</span></button>
+            <div class="big_button first_topic vertical_align" onclick="selectTopic(this)"><span>Phrasal verbs</span></div>
+            <div class="big_button another_topic vertical_align" onclick="selectTopic(this)"><span>Expressions from movies</span></div>
+            <button class="big_button another_topic vertical_align" onclick="selectTopic(this)"><span>... another advanced topic</span></button>
             <div class="arrow_nav">
                 <div class="arrow vertical_align"><span><<</span></div>
                 <div class="arrow vertical_align"><span>>></span></div>
             </div>
-            <button class="average_button start_game"><span>Start game</span></button>
+            <button class="average_button start_game" onclick="startGame()"><span>Start game</span></button>
         </div>
     </body>
 {% endblock %}

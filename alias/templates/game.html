@@ -6,62 +6,63 @@
 {% endblock %}
 
 {% block content %}
-    <body>
+    <body onload="initiate_timer(); initiateLanguage();">
+        <audio id="end_sound" src="{{ url_for('static', filename='audio/time_is_over.ogg') }}"></audio>
         <div class="wrapper flex-container">
             <div class="navigation">
-                <button class="small_button">New game</button>
-                <button class="small_button">Log out</button>
+                <button class="small_button" onclick="backToMenu()">Back to menu</button>
+                <button class="small_button" onclick="logOut()">Log out</button>
             </div>
             <div class="time_wrapper flex_row">
                 <div class="small_timer flex_row">
-                    <div class="plus vertical_align"><span>+</span></div>
+                    <div class="plus vertical_align" onclick="addHalfMinute()"><span>+</span></div>
                     <div class="time">
                         <span class="minutes">2</span>
                         <span class="delimiter">:</span>
                         <span class="seconds">00</span>
                     </div>
-                    <div class="minus vertical_align"><span>-</span></div>
+                    <div class="minus vertical_align" onclick="subtractHalfMinute()"><span>-</span></div>
                 </div>
-                <div class="reset vertical_align"><span>reset</span></div>
+                <div class="reset vertical_align" onclick="resetTimer()"><span>reset</span></div>
             </div>
-            <div class="game_board">
-                     <div class="translem_wrapper ">
+            <div class="game_board" onclick="change_language()">
+                <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at mmk mlm tmmmmmmmmm mmmm mall</span>
+                    <span id="1" class="words"></span>
                 </div>
                     <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the majjlj jlj ljl ljlll</span>
-                </div>
-               <div class="translem_wrapper ">
-                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall</span>
+                    <span id="2" class="words"></span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall and</span>
+                    <span id="3" class="words"></span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the mall</span>
+                    <span id="4" class="words"></span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at the</span>
+                    <span id="5" class="words"></span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping </span>
+                    <span id="6" class="words"></span>
                 </div>
                 <div class="translem_wrapper ">
                     <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
-                    <span class="words">shopping at </span>
+                    <span id="7" class="words"></span>
+                </div>
+                <div class="translem_wrapper ">
+                    <img class="sound" src="{{ url_for('static', filename='img/sound.svg') }}" alt="">
+                    <span id="8" class="words"></span>
                 </div>
             </div>
             <div class="control_wrapper flex_row">
-                <div class="prev "><span class="arr">«</span><span class="notation">prev</span></div>
-                <button class="start_timer"><span>Start timer</span></button>
-                <div class="next"><span class="arr">»</span><span class="notation">next</span></div>
+                <div class="prev" onclick="prevCard()"><span class="arr">«</span><span class="notation">prev</span></div>
+                <button class="control_timer" onclick="controlTimer()"><span>Start timer</span></button>
+                <div class="next" onclick="nextCard(); toggleFullScreen();"><span class="arr">»</span><span class="notation">next</span></div>
             </div>
         </div>
     </body>

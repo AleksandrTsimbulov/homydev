@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block css_links %}
+{#    <link rel="stylesheet" media='not screen and (min-width: 680px) and (min-height: 880px)' href="{{ url_for('static', filename='css/welcome.css') }}">#}
+{#    <link rel="stylesheet" media="(min-width: 680px) and (min-height: 880px)" href="{{ url_for('static', filename='css/welcome_full.css') }}">#}
+{% endblock %}
+
+{% block content %}
+    <body>
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque deleniti iure quam, quisquam sint totam
+        voluptas! Aliquam aliquid eius obcaecati porro, quod sapiente tempore unde. Atque nobis quia quidem similique.
+    </div>
+    <div>Amet consequuntur dolores eos ipsum magni neque numquam obcaecati officia quasi, reiciendis vero voluptates?
+        Excepturi maiores officia placeat. Accusamus consequuntur enim et eveniet exercitationem impedit nemo neque,
+        possimus tenetur veritatis!
+    </div>
+    <div>Dolorem ex expedita magni molestiae officia optio veniam vero. Ab amet commodi consequatur exercitationem,
+        libero natus nisi porro sunt! Blanditiis consequuntur doloremque fugit magnam, minus neque possimus quidem
+        quisquam vitae.
+    </div>
+    <div>Alias autem consequuntur doloribus eos facilis numquam praesentium vel velit? Alias aspernatur debitis eligendi
+        illum maxime natus neque nostrum numquam omnis pariatur quibusdam quisquam ratione, sed tempora tempore, totam
+        vitae?
+    </div>
+    <div>A accusamus architecto, aspernatur cupiditate, delectus dignissimos dolores error exercitationem harum
+        inventore ipsam magnam neque nobis odio rem repellendus saepe sunt suscipit tempore temporibus ullam unde velit,
+        veritatis voluptates voluptatum.
+    </div>
+    <a href="{{ url_for('welcome') }}">GO TO WELCOME!!!!</a>
+    </body>
+{% endblock %}

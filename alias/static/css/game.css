@@ -145,7 +145,7 @@
     color: #FFE5A9;
 }
 
-.start_timer {
+.control_timer {
     align-self: flex-start;
     background: #FFE5A9;
     border-radius: 10px;
@@ -162,3 +162,6 @@
     color: #05296E;
 }
 
+.sound {
+    visibility: hidden;
+}
