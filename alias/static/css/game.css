@@ -31,6 +31,10 @@
     color: #05296E;
 }
 
+.plus:hover, .minus:hover {
+    cursor: pointer;
+}
+
 .time {
     width: 70px;
     height: 30px;
@@ -70,6 +74,10 @@
     text-align: center;
 
     color: #05296E;
+}
+
+.reset:hover {
+    cursor: pointer;
 }
 
 .game_board {
@@ -133,6 +141,10 @@
     color: #FFE5A9;
 }
 
+.arr:hover {
+    cursor: pointer;
+}
+
 .notation {
     display: block;
     font-family: Montserrat;
@@ -162,6 +174,14 @@
     color: #05296E;
 }
 
+.control_timer:hover, .notation:hover {
+    cursor: pointer;
+}
+
 .sound {
     visibility: hidden;
+}
+
+.logout {
+    display: none;
 }

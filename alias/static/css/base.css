@@ -67,6 +67,10 @@ div, span {
     color: #05296E;
 }
 
+.small_button:hover {
+    cursor: pointer;
+}
+
 .average_button {
     width: 180px;
     height: 60px;
@@ -83,6 +87,10 @@ div, span {
     color: #05296E;
 }
 
+.average_button:hover {
+    cursor: pointer;
+}
+
 .big_button {
     width: 220px;
     height: 60px;
@@ -97,6 +105,10 @@ div, span {
     text-align: center;
 
     color: #05296E;
+}
+
+.big_button:hover {
+    cursor: pointer;
 }
 
 .arrow {

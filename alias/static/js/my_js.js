@@ -129,7 +129,7 @@ function change_language() {
 }
 
 function quickStart() {
-    let postQuickStart = {'action': 'add_topics', 'topics': ['origin']};
+    let postQuickStart = {'action': 'add_topics', 'topics': ['regular_alias_words']};
     $.ajax({
         type: 'POST',
         url: '/act',
