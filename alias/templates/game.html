@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <body onload="initiate_timer(); initiateLanguage();">
+    <body onload="initiate_timer(); initiateLanguage(); nextCard();">
         <audio id="end_sound" src="{{ url_for('static', filename='audio/time_is_over.ogg') }}"></audio>
         <div class="wrapper flex-container">
             <div class="navigation">

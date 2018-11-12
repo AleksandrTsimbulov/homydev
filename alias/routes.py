@@ -61,7 +61,7 @@ def login():
 def logout():
     remove_game(current_user)
     logout_user()
-    return redirect(url_for('welcome'))
+    return redirect(url_for('index'))
 
 
 @app.route('/act', methods=['POST'])
@@ -102,32 +102,33 @@ def act():
 
 @app.route('/')
 @app.route('/index')
-@login_required
 def index():
-    topics = Topic.get_topic_names()
-    return redirect(url_for('welcome'))
-    # return render_template('welcome.html', topics=topics)
+    return render_template('index.html')
 
 
 @app.route('/welcome')
+@login_required
 def welcome():
     title = 'welcome'
     return render_template('welcome.html', title=title)
 
 
 @app.route('/study')
+@login_required
 def study():
     title = 'study'
     return render_template('study.html', title=title)
 
 
 @app.route('/for_fun')
+@login_required
 def for_fun():
     title = 'for fun'
     return render_template('for_fun.html', title=title)
 
 
 @app.route('/game')
+@login_required
 def game():
     title = 'game'
     return render_template('game.html', title=title)

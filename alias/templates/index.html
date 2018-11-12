@@ -1,8 +1,21 @@
 {% extends "base.html" %}
 
+{% block css_links %}
+<link rel="stylesheet" media='not screen and (min-width: 680px) and (min-height: 880px)' href="{{ url_for('static', filename='css/index.css') }}">
+<link rel="stylesheet" media="(min-width: 680px) and (min-height: 880px)" href="{{ url_for('static', filename='css/index_full.css') }}">
+{% endblock %}
+
 {% block index %}
 <body>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut blanditiis esse iure modi molestias quaerat quisquam ratione veniam, vitae. Eaque esse facilis fugiat ipsam iure minima quia repellendus rerum sapiente?
+<div class="wrapper flex-container">
+<div class="initial_greeting">
+    <p>Welcome to Homychat!</p>
+    <p>It's just time for playing alias and learning some new words. <a href="{{ url_for('register') }}">Register</a> if you are a new user or <a href="{{ url_for('login') }}">sign in</a> and start the game.</p>
+    <p>Find more about our regular events on vk: <a href="https://vk.com/homychat">https://vk.com/homychat.</a></p>
+</div>
+
+
+</div>
 </body>
 
 {% endblock %}}

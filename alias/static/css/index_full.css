@@ -1,0 +1,21 @@
+.wrapper {
+    width: 660px;
+    /*height: 870px;*/
+    margin: 0 auto;
+}
+
+.initial_greeting {
+    width: 600px;
+    margin-top: 60px;
+    display: inline-block;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    line-height: normal;
+    font-size: 48px;
+    text-align: justify;
+    letter-spacing: 0.03em;
+
+    color: #FFEDC2;
+}

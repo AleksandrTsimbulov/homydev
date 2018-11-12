@@ -28,7 +28,9 @@ class Translems(db.Model):
     russian = db.Column(db.String(64), index=True, nullable=False)
     english = db.Column(db.String(64), index=True, nullable=False)
     topic_id = db.Column(db.Integer, db.ForeignKey('topic.id', ondelete='CASCADE'), nullable=False)
+    voice = db.Column(db.LargeBinary)
     __table_args__ = (db.UniqueConstraint('russian', 'english', 'topic_id', name='_my_constrain'), )
+
 
     def __repr__(self):
         return f'<Table> {self.__tablename__}'
