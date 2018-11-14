@@ -38,5 +38,5 @@ def synthesize_several_words_and_save_as_files_and_commit_to_database(number_of_
             ps.write(binary_voice)
 
 
-number_or_words = 300
+number_or_words = 900
 synthesize_several_words_and_save_as_files_and_commit_to_database(number_or_words)

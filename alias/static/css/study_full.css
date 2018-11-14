@@ -24,3 +24,7 @@
 .start_game {
     margin-top: 40px;
 }
+
+#future_topics {
+    display: none;
+}

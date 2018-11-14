@@ -1,10 +1,10 @@
-// time realization begins
+/////////////////////////////////////////////////////// timer begins
+
 function addHalfMinute() {
     if (window.totalSeconds < 570) {
         window.totalSeconds += 30;
         showTimer();
     }
-    console.log(window.totalSeconds);
 }
 
 function subtractHalfMinute() {
@@ -12,7 +12,6 @@ function subtractHalfMinute() {
         window.totalSeconds -= 30;
         showTimer();
     }
-    console.log(window.totalSeconds)
 }
 
 function getTime(seconds) {
@@ -56,14 +55,13 @@ function stopTimer() {
 
 function controlTimer() {
     if (window.isFirstStart === 1 || window.isTimer === 0) {
-        console.log('in control');
         startTimer();
         document.querySelector('.control_timer').innerHTML = 'Stop timer';
     } else if (window.isTimer === 1) {
         stopTimer();
         document.querySelector('.control_timer').innerHTML = 'Resume timer';
     } else {
-        console.log('I do not know how I got here!');
+        console.log('fuction controlTimer error');
     }
 }
 
@@ -81,10 +79,10 @@ function initiate_timer() {
     document.querySelector('.control_timer').innerHTML = 'Start timer';
     showTimer();
 }
-//////////////////////////////////////////////////////////// timer realization ends
+//////////////////////////////////////////////////////////// timer ends
 
 
-/////////////////////////////////////////////////////////// navigation part
+/////////////////////////////////////////////////////////// navigation begins
 function goToStudy() {
     window.location.pathname = '/study';
 }
@@ -100,18 +98,16 @@ function backToMenu() {
 function logOut() {
     window.location.pathname = '/logout'
 }
-///////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////// navigation ends
 
 
 /////////////////////////////////////////////////////////// main control
 
 var selectedTopics;
 var currentLanguage;
-var ajaxResponse;
 
 function initiateTopicList() {
     selectedTopics = [];
-    console.log(typeof  selectedTopics);
 }
 
 function initiateLanguage() {
@@ -137,14 +133,13 @@ function quickStart() {
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         cache: false,
-        success: function (response) {
-            console.log(response);
+        success: function () {
+            window.location.pathname = '/game';
         },
         failure: function () {
             console.log('quickStart failed');
         }
     });
-    window.location.pathname = '/game';
 }
 
 function startGame() {
@@ -158,13 +153,12 @@ function startGame() {
         dataType: 'json',
         cache: false,
         success: function (response) {
-            console.log(response, 'success');
+            window.location.pathname = '/game';
         },
         failure: function () {
             console.log('startGame failed');
         }
     });
-    window.location.pathname = '/game';
 }
 
 function selectTopic(elmnt) {
@@ -188,7 +182,6 @@ function nextCard() {
         resetTimer();
     }
     var postNew = {'action': 'next_card'};
-    console.log(JSON.stringify(postNew));
     $.ajax({
         type: 'POST',
         url: '/act',
@@ -200,17 +193,15 @@ function nextCard() {
             window.ajaxResponse = response;
             window.currentLanguage = "english";
             getEnglish();
-            console.log(window.ajaxResponse);
         },
         failure: function () {
-            console.log('fail');
+            console.log('nextCard fail');
         }
     })
 }
 
 function prevCard() {
     var postPrev = {'action': 'prev_card'};
-    console.log(JSON.stringify(postPrev));
     $.ajax({
         type: 'POST',
         url: '/act',
@@ -222,10 +213,9 @@ function prevCard() {
             window.ajaxResponse = response;
             window.currentLanguage = "english";
             getEnglish();
-            console.log(window.ajaxResponse);
         },
         failure: function () {
-            console.log('fail');
+            console.log('prevCard fail');
         }
     })
 }
@@ -233,23 +223,18 @@ function prevCard() {
 function getEnglish() {
     clearWords();
     let englishWords = window.ajaxResponse.english;
-    console.log('GOT ENGLISH!!!');
-    console.log(englishWords);
     let i;
     for (i=0; i < 8; i++) {
         document.getElementById((i+1).toString()).innerText = englishWords[i];
-        console.log(englishWords[i])
     }
 }
 
 function getRussian() {
     clearWords();
     let russianWords = window.ajaxResponse.russian;
-    console.log(russianWords);
     let i;
     for (i=0; i < 8; i++) {
         document.getElementById((i+1).toString()).innerText = russianWords[i];
-        console.log(russianWords[i])
     }
 }
 
@@ -261,9 +246,26 @@ function clearWords() {
     }
 }
 
-///////////////////////////////////////////////////////////////////
+function toggleFullScreen() {
+  // make it fullscreen and back
+  let doc = window.document;
+  let docEl = doc.documentElement;
+  let button = document.getElementsByClassName('full_screen')[0];
 
+  let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+  let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
+  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    button.innerHTML = 'Exit f/screen';
+    requestFullScreen.call(docEl);
+  }
+  else {
+    cancelFullScreen.call(doc);
+    button.innerHTML = 'Full screen';
+  }
+}
+
+/////////////////////////////////////////////////////////////////// main control ends
 
 
 ////////////////////////////////////////////////////////////////// future functions
@@ -282,19 +284,4 @@ function makeSoundVisible() {
     }
 }
 
-// make it fullscreen
-function toggleFullScreen() {
-    console.log('I am here!');
-  let doc = window.document;
-  let docEl = doc.documentElement;
 
-  let requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-  // let cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-    requestFullScreen.call(docEl);
-  }
-  // else {
-  //   cancelFullScreen.call(doc);
-  // }
-}
